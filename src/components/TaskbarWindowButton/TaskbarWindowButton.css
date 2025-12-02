@@ -1,0 +1,25 @@
+.taskbar-window-button {
+  height: 100%;
+  border: none;
+  cursor: pointer;
+  padding: 0 12px;
+  background: transparent;
+
+  gap: 6px;
+  display: flex;
+  align-items: center;
+
+  color: var(--color-white);
+  font-family: var(--font-body);
+  border-radius: var(--radius-small);
+
+  transition: background 0.2s;
+}
+
+.taskbar-window-button:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.taskbar-window-button--minimized {
+  opacity: 0.55;
+}

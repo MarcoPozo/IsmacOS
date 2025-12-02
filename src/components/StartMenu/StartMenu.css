@@ -1,0 +1,21 @@
+.startmenu {
+  position: fixed;
+  left: 12px;
+  bottom: calc(var(--taskbar-height) + 12px);
+
+  width: 280px;
+  height: 360px;
+
+  padding: 20px;
+  border-radius: var(--radius-window);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.startmenu__placeholder {
+  opacity: 0.8;
+  text-align: center;
+  font-family: var(--font-body);
+}
