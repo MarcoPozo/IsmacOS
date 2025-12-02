@@ -1,0 +1,50 @@
+.taskbar {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--taskbar-height);
+  padding: 0;
+
+  gap: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: var(--glass-bg);
+  border-top: 1px solid var(--glass-border);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.6);
+
+  z-index: 1000;
+}
+
+.taskbar__left,
+.taskbar__center,
+.taskbar__right {
+  gap: 8px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.taskbar__start-button {
+  height: 100%;
+  border: none;
+  cursor: pointer;
+  padding: 6px 14px;
+  color: var(--color-white);
+  font-family: var(--font-body);
+  border-radius: var(--radius-small);
+  background: var(--color-primary-dark);
+}
+
+.taskbar__start-button:hover {
+  background: var(--color-primary);
+}
+
+.taskbar__hint {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}

@@ -1,0 +1,23 @@
+.desktop {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: var(--color-bg);
+
+  background-image: url("/images/wallpapers/fondo1.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+}
+
+.desktop__icons {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+
+  gap: 12px;
+  display: flex;
+  flex-direction: column;
+}

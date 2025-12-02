@@ -1,0 +1,28 @@
+.icon {
+  width: 84px;
+  border: none;
+  cursor: pointer;
+  padding: 6px 4px;
+  text-align: center;
+  font-size: 0.78rem;
+  background: transparent;
+  color: var(--color-white);
+  font-family: var(--font-body);
+}
+
+.icon__image {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  overflow: hidden;
+  margin: 0 auto 4px;
+  border-radius: 12px;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.icon__label {
+  display: block;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7);
+}

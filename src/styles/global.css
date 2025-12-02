@@ -1,0 +1,70 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
+
+:root {
+  /* Colores */
+  --color-bg: #0a111b;
+  --color-bg-elevated: #1d314b;
+  --color-primary: #ae0e15;
+  --color-primary-dark: #710409;
+  --color-primary-darker: #370506;
+  --color-accent: #1d314b;
+
+  --color-white: #f2f2f2;
+  --color-black: #010101;
+  --color-text: #f2f2f2;
+  --color-text-muted: #c4c4c4;
+
+  /* Glass */
+  --glass-bg: rgba(10, 17, 27, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-highlight: rgba(255, 255, 255, 0.12);
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
+
+  /* Bordes */
+  --radius-small: 3px;
+  --radius-window: 5px;
+  --radius-pill: 999px;
+
+  /* Fuentes */
+  --font-title: "Montserrat", sans-serif;
+  --font-body: "Inter", sans-serif;
+
+  /* TaskBar */
+  --taskbar-height: 50px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  color: var(--color-text);
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+}
+
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(18px);
+  box-shadow: var(--shadow-soft);
+  -webkit-backdrop-filter: blur(18px);
+  border-radius: var(--radius-window);
+  border: 1px solid var(--glass-border);
+}
