@@ -1,21 +1,131 @@
-.startmenu {
+.start-menu {
   position: fixed;
-  left: 12px;
+  inset: 0;
+  z-index: 1500;
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+  background: transparent;
+}
+
+/* Panel principal */
+.start-menu__panel {
+  position: absolute;
   bottom: calc(var(--taskbar-height) + 12px);
 
-  width: 280px;
-  height: 360px;
+  width: 640px;
+  max-width: 90vw;
+  max-height: 70vh;
 
-  padding: 20px;
-  border-radius: var(--radius-window);
+  padding: 14px 18px 12px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 
+  animation: startMenuIn 160ms ease-out forwards;
+}
+
+/* Header */
+.start-menu__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.start-menu__title {
+  font-family: var(--font-title);
+  font-size: 0.95rem;
+}
+
+/* Cuerpo */
+.start-menu__body {
+  flex: 1;
+  display: flex;
+  gap: 16px;
+  overflow: hidden;
+}
+
+.start-menu__section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.start-menu__section-title {
+  margin: 0 0 8px;
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+}
+
+.start-menu__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.start-menu__tile {
+  height: 58px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.04);
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.08s ease;
 }
 
-.startmenu__placeholder {
-  opacity: 0.8;
-  text-align: center;
-  font-family: var(--font-body);
+.start-menu__tile:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateY(-1px);
+}
+
+.start-menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.start-menu__list-item {
+  height: 32px;
+  border-radius: 8px;
+  padding: 0 8px;
+  display: flex;
+  align-items: center;
+  font-size: 0.8rem;
+  background: rgba(255, 255, 255, 0.03);
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.start-menu__list-item:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.start-menu__footer {
+  margin-top: 8px;
+  padding-top: 6px;
+  border-top: 1px solid var(--glass-border);
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.78rem;
+  color: var(--color-text-muted);
+}
+
+.start-menu__user {
+  opacity: 0.9;
+}
+
+@keyframes startMenuIn {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(10px);
+  }
 }
