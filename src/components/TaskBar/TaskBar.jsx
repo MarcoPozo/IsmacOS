@@ -1,6 +1,5 @@
 import "./TaskBar.css";
 import { useState, useRef } from "react";
-import { FiSearch } from "react-icons/fi";
 import { useWindowManager } from "../../context/WindowContext";
 
 import TaskbarWindowButton from "../TaskbarWindowButton/TaskbarWindowButton";
@@ -22,25 +21,39 @@ export default function TaskBar() {
 
   return (
     <>
-      <div className="taskbar">
+      <nav className="taskbar" aria-label="Barra de tareas">
         <div className="taskbar__side taskbar__left" />
 
         <div className="taskbar__center">
-          <button
-            ref={startButtonRef}
-            className="taskbar__icon-button taskbar__icon-button--start"
-            onClick={handleStart}
-            type="button"
-          >
-            <span className="taskbar__start-logo" />
-          </button>
+          <div className="taskbar__center-group">
+            <button
+              ref={startButtonRef}
+              className="taskbar__icon-button"
+              onClick={handleStart}
+              type="button"
+              aria-label="Abrir menú Inicio">
+              <span className="taskbar__icon">
+                <img
+                  src="/images/icons/logoSismac64.png"
+                  alt="Logo IsmacOS"
+                  className="taskbar__icon-img"
+                />
+              </span>
+            </button>
 
-          <button
-            className="taskbar__icon-button"
-            type="button"
-          >
-            <FiSearch size={18} />
-          </button>
+            <button
+              className="taskbar__icon-button"
+              type="button"
+              aria-label="Abrir búsqueda">
+              <span className="taskbar__icon">
+                <img
+                  src="/images/icons/buscar.png"
+                  alt="Logo buscar"
+                  className="taskbar__icon-img"
+                />
+              </span>
+            </button>
+          </div>
 
           <div className="taskbar__apps">
             {windows.map((w) => (
@@ -54,7 +67,7 @@ export default function TaskBar() {
         </div>
 
         <div className="taskbar__side taskbar__right" />
-      </div>
+      </nav>
 
       <StartMenu
         isOpen={startOpen}

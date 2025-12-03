@@ -22,7 +22,7 @@
   --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.65);
 
   /* Bordes */
-  --radius-small: 3px;
+  --radius-small: 4px;
   --radius-window: 5px;
   --radius-pill: 999px;
 
@@ -32,6 +32,12 @@
 
   /* TaskBar */
   --taskbar-height: 50px;
+
+  /* Transiciones */
+  --transition-fast: 120ms;
+  --transition-normal: 180ms;
+  --transition-slow: 260ms;
+  --transition-ease: ease-out;
 }
 
 *,
