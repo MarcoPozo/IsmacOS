@@ -6,15 +6,25 @@ export const windowsRegistry = {
     id: "config",
     title: "Configuración",
     route: "/configuracion",
-    icon: FiSettings,
+    component: Config,
     defaultSize: {
       width: 500,
       height: 380,
     },
-    component: Config,
+    iconImage: "/images/icons/configuracion64.png",
+    icon: FiSettings,
+    pinned: true,
   },
 };
 
 export function getWindowDefinition(id) {
   return windowsRegistry[id] ?? null;
+}
+
+export function getAllApps() {
+  return Object.values(windowsRegistry);
+}
+
+export function getPinnedApps() {
+  return Object.values(windowsRegistry).filter((app) => app.pinned);
 }

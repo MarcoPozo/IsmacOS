@@ -62,7 +62,8 @@
   border-radius: var(--radius-small);
 
   color: var(--color-white);
-  transition: background var(--transition-normal) var(--transition-ease),
+  transition:
+    background var(--transition-normal) var(--transition-ease),
     transform var(--transition-fast) var(--transition-ease);
 }
 
@@ -91,7 +92,6 @@
   transform: scale(0.7);
 }
 
-.taskbar__apps {
-  display: flex;
-  align-items: center;
+.taskbar__icon-button--minimized {
+  opacity: 0.55;
 }

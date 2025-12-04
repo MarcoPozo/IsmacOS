@@ -2,14 +2,19 @@ import "./TaskBar.css";
 import { useState, useRef } from "react";
 import { useWindowManager } from "../../context/WindowContext";
 
-import TaskbarWindowButton from "../TaskbarWindowButton/TaskbarWindowButton";
 import StartMenu from "../StartMenu/StartMenu";
+import TaskbarWindowButton from "../TaskbarWindowButton/TaskbarWindowButton";
+import TaskbarIconButton from "../TaskbarIconButton/TaskbarIconButton";
+import { getPinnedApps } from "../../config/windowsRegistry";
 
 export default function TaskBar() {
-  const { windows } = useWindowManager();
-  const [startOpen, setStartOpen] = useState(false);
+  const { windows, openWindow, bringToFront, toggleMinimize } =
+    useWindowManager();
 
+  const [startOpen, setStartOpen] = useState(false);
   const startButtonRef = useRef(null);
+
+  const pinnedApps = getPinnedApps();
 
   const handleStart = () => {
     setStartOpen((prev) => !prev);
@@ -19,6 +24,25 @@ export default function TaskBar() {
     setStartOpen(false);
   };
 
+  const handlePinnedClick = (app) => {
+    const existingWindow = windows.find((w) => w.id === app.id);
+
+    if (!existingWindow) {
+      openWindow(app.id);
+      return;
+    }
+
+    if (existingWindow.minimized) {
+      toggleMinimize(app.id);
+    }
+
+    bringToFront(app.id);
+  };
+
+  const nonPinnedWindows = windows.filter(
+    (w) => !pinnedApps.some((app) => app.id === w.id)
+  );
+
   return (
     <>
       <nav className="taskbar" aria-label="Barra de tareas">
@@ -26,37 +50,42 @@ export default function TaskBar() {
 
         <div className="taskbar__center">
           <div className="taskbar__center-group">
-            <button
+            <TaskbarIconButton
               ref={startButtonRef}
-              className="taskbar__icon-button"
+              ariaLabel="Abrir menú Inicio"
+              iconImage="/images/icons/logoSismac64.png"
+              extraClassName="taskbar__icon-button--start"
               onClick={handleStart}
-              type="button"
-              aria-label="Abrir menú Inicio">
-              <span className="taskbar__icon">
-                <img
-                  src="/images/icons/logoSismac64.png"
-                  alt="Logo IsmacOS"
-                  className="taskbar__icon-img"
-                />
-              </span>
-            </button>
+            />
 
-            <button
-              className="taskbar__icon-button"
-              type="button"
-              aria-label="Abrir búsqueda">
-              <span className="taskbar__icon">
-                <img
-                  src="/images/icons/buscar.png"
-                  alt="Logo buscar"
-                  className="taskbar__icon-img"
-                />
-              </span>
-            </button>
-          </div>
+            <TaskbarIconButton
+              ariaLabel="Abrir búsqueda"
+              iconImage="/images/icons/buscar.png"
+              extraClassName="taskbar__icon-button--search"
+              onClick={() => {
+              }}
+            />
 
-          <div className="taskbar__apps">
-            {windows.map((w) => (
+            {/* Apps fijas */}
+            {pinnedApps.map((app) => {
+              const existingWindow = windows.find((w) => w.id === app.id);
+              const isMinimized = existingWindow?.minimized ?? false;
+
+              return (
+                <TaskbarIconButton
+                  key={app.id}
+                  ariaLabel={app.title}
+                  iconImage={app.iconImage}
+                  Icon={app.icon}
+                  minimized={isMinimized}
+                  extraClassName="taskbar__icon-button--app taskbar__icon-button--pinned"
+                  onClick={() => handlePinnedClick(app)}
+                />
+              );
+            })}
+
+            {/* Apps no fijas */}
+            {nonPinnedWindows.map((w) => (
               <TaskbarWindowButton
                 key={w.id}
                 id={w.id}
